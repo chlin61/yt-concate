@@ -1,1 +1,3 @@
 python-dotenv==0.15.0
+pytube @ git+https://github.com/nficano/pytube@a630da4fbb5fb9a64fb8222b2674896b34272e16
+typing-extensions==3.7.4.3
