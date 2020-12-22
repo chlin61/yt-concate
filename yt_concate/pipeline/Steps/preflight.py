@@ -1,5 +1,5 @@
 
-from .Step import Step
+from .step import Step
 
 
 class Preflight(Step):

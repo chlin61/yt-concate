@@ -1,8 +1,8 @@
 # from youtube_transcript_api import YouTubeTranscriptApi
 
 from pytube import YouTube
-from .Step import Step
-from .Step import StepException
+from .step import Step
+from .step import StepException
 
 
 class DownloadCaptions(Step):
