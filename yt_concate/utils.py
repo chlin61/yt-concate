@@ -19,17 +19,19 @@ class Utils:
         # if not os.path.exists(VIDEOS_DIR):
         os.makedirs(VIDEOS_DIR, exist_ok=True)
 
-    @staticmethod
-    def get_video_id_from_url(url):
-        return url.split('watch?v=')[-1]
 
-    def get_caption_filepath(self, url):
-        return os.path.join(CAPTION_DIR, self.get_video_id_from_url(url) + '.txt')
 
-    def cation_file_exist(self, url):
-        path = self.get_caption_filepath(url)
+
+
+    def cation_file_exist(self, yt):
+        filepath = yt.caption_filepath
         # 確認檔案是否存在且檔案大小大於0
-        return os.path.exists(path) and os.path.getsize(path) > 0
+        return os.path.exists(filepath) and os.path.getsize(filepath) > 0
+
+    def video_file_exist(self, yt):
+        filepath = yt.video_filepath
+        # 確認檔案是否存在且檔案大小大於0
+        return os.path.exists(filepath) and os.path.getsize(filepath) > 0
 
     def get_video_list_filepath(self, channel_id):
         return os.path.join(DOWNLOADS_DIR, channel_id + '.txt')
