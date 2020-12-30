@@ -16,6 +16,7 @@ class DownloadVideos(Step):
                 continue
             print(url + ' downloading ....')
             try:
+                # raise Exception
                 YouTube(url).streams.first().download(output_path=VIDEOS_DIR, filename=yt.id)
 
             except:

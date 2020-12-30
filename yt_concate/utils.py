@@ -2,6 +2,7 @@ import os
 from yt_concate.settings import DOWNLOADS_DIR
 from yt_concate.settings import VIDEOS_DIR
 from yt_concate.settings import CAPTION_DIR
+from yt_concate.settings import OUTPUT_DIR
 
 
 
@@ -18,6 +19,7 @@ class Utils:
         os.makedirs(CAPTION_DIR, exist_ok=True)
         # if not os.path.exists(VIDEOS_DIR):
         os.makedirs(VIDEOS_DIR, exist_ok=True)
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
 
@@ -41,5 +43,8 @@ class Utils:
         # 確認檔案是否存在且檔案大小大於0
         return os.path.exists(path) and os.path.getsize(path) > 0
 
+    def get_output_filepath(self, channel_id, search_word):
+        filename = channel_id + '_' + search_word + '.mp4'
+        return os.path.join(OUTPUT_DIR, filename)
 
 
