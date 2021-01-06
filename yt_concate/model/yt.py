@@ -21,6 +21,9 @@ class YT:
     def get_video_filepath(self):
         return os.path.join(VIDEOS_DIR, self.id + '.mp4')
 
+    def check_file_exists(self):
+        return os.path.exists(self.video_filepath)
+
     def __str__(self):
         return '<YT(' + self.id + ')>'
 

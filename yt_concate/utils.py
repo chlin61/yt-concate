@@ -21,10 +21,6 @@ class Utils:
         os.makedirs(VIDEOS_DIR, exist_ok=True)
         os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-
-
-
-
     def cation_file_exist(self, yt):
         filepath = yt.caption_filepath
         # 確認檔案是否存在且檔案大小大於0

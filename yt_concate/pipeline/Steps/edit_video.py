@@ -25,13 +25,17 @@ def annotate(chip, txt, txt_color='white', font_size=20):
 
 
 class EditVideo(Step):
-    def process(self, data, inputs, utils):
+    def process(self, data, inputs, utils, logger):
+        logger.info('Editting Video ...')
         video_set =[]
         for found in data:
             time = found.time
             caption = found.caption
             start, end = self.parse_caption_time(time)
-
+            # print(found.yt.video_filepath)
+            if not found.yt.check_file_exists():
+                logger.debug(found.yt.video_filepath + ' 檔案沒下載成功..')
+                continue
             video = VideoFileClip(found.yt.video_filepath).subclip(start, end)
             video = annotate(video, caption)
             video_set.append(video)

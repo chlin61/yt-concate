@@ -2,7 +2,8 @@ from .step import Step
 
 
 class ReadCaptions(Step):
-    def process(self, data, inputs, utils):
+    def process(self, data, inputs, utils, logger):
+        logger.info('Read Captions ...')
         for yt in data:
             if not utils.cation_file_exist(yt):
                 continue

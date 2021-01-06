@@ -6,10 +6,11 @@ from yt_concate.settings import API_KEY
 
 
 class GetVideoList(Step):
-    def process(self, date, inputs, utils):
+    def process(self, date, inputs, utils, logger):
         channel_id = inputs['channel_id']
+        logger.info('Get video list.')
         if utils.video_list_file_exists(channel_id):
-            print('Found existing video list file for channel id:', channel_id)
+            logger.info('Found existing video list file for channel id:' + channel_id)
             return self.read_to_file(utils.get_video_list_filepath(channel_id))
 
         base_video_url = 'https://www.youtube.com/watch?v='
@@ -33,7 +34,7 @@ class GetVideoList(Step):
                 url = first_url + '&pageToken={}'.format(next_page_token)
             except KeyError:
                 break
-        print(video_links)
+        # print(video_links)
         self.write_to_file(video_links, utils.get_video_list_filepath(channel_id))
         return video_links
 
